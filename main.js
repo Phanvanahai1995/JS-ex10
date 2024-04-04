@@ -9,7 +9,7 @@ Array.prototype.push2 = function (...args) {
 
 var arr1 = [1, 2];
 
-arr1.push2(3, 4);
+arr1.push2(3, 4, 5, 6);
 console.log(arr1);
 
 // Bài 4
@@ -135,7 +135,7 @@ const dataTre2 = function (data, parent = 0, level = 0) {
 const listMenu = dataTre2(data);
 
 listMenu.forEach((item) => {
-  let decorate = "-|-";
+  let decorate = "--|";
   html = `
   <option value="">${decorate.repeat(item.level)}${item.name}</option>
   `;
