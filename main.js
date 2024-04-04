@@ -91,6 +91,10 @@ var categories = [
   },
 ];
 
+const menu = document.querySelector("#menu");
+let html = "";
+
+// Function flat categories
 const dataTre = function (data, parent = 0) {
   let result1 = [];
   let result2 = [];
@@ -113,11 +117,9 @@ const dataTre = function (data, parent = 0) {
   return result1.concat(result2);
 };
 
-const data = dataTre(categories);
+const newCategories = dataTre(categories);
 
-const menu = document.querySelector("#menu");
-let html = "";
-
+// Function sort new categories
 const dataTre2 = function (data, parent = 0, level = 0) {
   let result = [];
   data.forEach((item) => {
@@ -132,12 +134,15 @@ const dataTre2 = function (data, parent = 0, level = 0) {
   return result;
 };
 
-const listMenu = dataTre2(data);
+const listMenu = dataTre2(newCategories);
 
-listMenu.forEach((item) => {
+// Function render HTML
+const handleRender = (item) => {
   let decorate = "--|";
   html = `
   <option value="">${decorate.repeat(item.level)}${item.name}</option>
   `;
   menu.insertAdjacentHTML("beforeend", html);
-});
+};
+
+listMenu.forEach(handleRender);
